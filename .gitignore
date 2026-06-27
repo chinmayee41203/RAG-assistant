@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Environment
+.env
+*.env
+
+# ChromaDB data (re-indexed locally)
+chroma_db/
+backend/chroma_db/
+
+# Local env files
+frontend/.env.local
+
+# HuggingFace model cache
+.cache/
+
+# Next.js
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Planning docs
+task.md
+implementation_plan.md
+
+# Claude memory
+.claude/
