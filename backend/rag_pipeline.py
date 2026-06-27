@@ -90,6 +90,13 @@ def get_llm():
             api_key=config.OPENAI_API_KEY,
             temperature=0.2,
         )
+    elif config.LLM_PROVIDER == "groq":
+        from langchain_groq import ChatGroq
+        return ChatGroq(
+            api_key=config.GROQ_API_KEY,
+            model=config.GROQ_MODEL,
+            temperature=0.2,
+        )
     else:
         from langchain_community.llms import Ollama
         return Ollama(
@@ -215,7 +222,7 @@ def generate_suggestions(chunks: List[Document], filename: str) -> List[str]:
     )
     try:
         llm = get_llm()
-        if config.LLM_PROVIDER == "openai":
+        if config.LLM_PROVIDER in ("openai", "groq"):
             from langchain_core.messages import HumanMessage
             response = llm.invoke([HumanMessage(content=prompt)])
             text = response.content
